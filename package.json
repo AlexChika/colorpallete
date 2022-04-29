@@ -1,16 +1,13 @@
 {
-  "name": "users",
+  "name": "color_pallete",
   "version": "0.1.0",
-  "homepage": "https://alexchika.github.io/color_pallete",
+  "homepage": "https://alexchika.github.io/colorpallete",
   "private": true,
   "dependencies": {
-    "@ant-design/icons": "^4.7.0",
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
-    "axios": "^0.26.0",
     "react": "^17.0.2",
-    "react-chat-engine": "^1.11.22",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
     "values.js": "^2.1.1",
@@ -41,5 +38,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.2.3"
   }
 }
