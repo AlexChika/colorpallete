@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/colorpallete/static/css/main.f09522d3.css",
+    "main.js": "/colorpallete/static/js/main.7e5f9efe.js",
+    "index.html": "/colorpallete/index.html",
+    "main.f09522d3.css.map": "/colorpallete/static/css/main.f09522d3.css.map",
+    "main.7e5f9efe.js.map": "/colorpallete/static/js/main.7e5f9efe.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f09522d3.css",
+    "static/js/main.7e5f9efe.js"
+  ]
+}
