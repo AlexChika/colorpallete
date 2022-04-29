@@ -1,25 +1,35 @@
 import React from "react";
-import { useState } from "react";
-const List = () => {
+import { useState, useEffect } from "react";
+import { rgbtohex } from "./utils";
+const List = ({ color, index }) => {
+  const [alert, setAlert] = useState(false);
+  const { rgb, weight } = color;
+  const [r, g, b] = rgb;
+  const hex = rgbtohex(r, g, b);
+  const handleCopy = () => {
+    setAlert(true);
+    navigator.clipboard.writeText(hex);
+  };
+  useEffect(() => {
+    const timeOut = setTimeout(() => {
+      setAlert(false);
+    }, 2000);
+    return () => {
+      clearTimeout(timeOut);
+    };
+  }, [alert]);
   return (
-    <div className="color_box">
-      <p>color</p>
+    <div
+      onClick={handleCopy}
+      style={{ backgroundColor: hex }}
+      className="color_box"
+    >
+      <div className={`box_content ${index > 10 ? "white" : "black"}`}>
+        <p>{weight}%</p>
+        <p>{hex}</p>
+        {alert && <p className="alert">COPIED TO CLIPBOARD</p>}
+      </div>
     </div>
   );
 };
-// const getUsers = async () => {
-//   setStatus({ ...status, loading: true, found: false, error: false });
-//   try {
-//     const response = await fetch(`https://jsonplaceholder.typicode.com/users`);
-//     console.log(response.status);
-//     if (response.status >= 200 && response.status < 300) {
-//       const users = await response.json();
-//       console.log(users);
-//       setUsers([...users]);
-//       setStatus({ ...status, loading: false, found: true, error: false });
-//     }
-//   } catch (e) {
-//     setStatus({ ...status, loading: false, found: false, error: true });
-//   }
-// };
 export default List;
