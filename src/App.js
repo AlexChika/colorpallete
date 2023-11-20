@@ -26,7 +26,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      const color = new Values(formValue).all(5);
+      const color = new Values(formValue).all(50);
       colorHeader(color);
       setColors(color);
     } catch (error) {
