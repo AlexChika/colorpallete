@@ -3,14 +3,17 @@ import { useState, useEffect } from "react";
 import Values from "values.js";
 import { rgbtohex } from "./utils";
 import List from "./List";
+
 function App() {
   const [formValue, setFormValue] = useState("");
-  const [status, setStatus] = useState(false);
+  const [err, setErr] = useState(false);
   const [colors, setColors] = useState([]);
+
   const handleChange = (e) => {
-    setStatus(false);
+    setErr(false);
     setFormValue(e.target.value);
   };
+
   function colorHeader(color) {
     const names = document.querySelectorAll(".name");
     names.forEach((name) => {
@@ -23,66 +26,45 @@ function App() {
       }
     });
   }
+
+  function applyColors(value) {
+    const color = new Values(value).all(1);
+    const colHeader = new Values(value).all(5);
+    colorHeader(colHeader);
+    setColors(color);
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     try {
-      const color = new Values(formValue).all(50);
-      colorHeader(color);
-      setColors(color);
+      applyColors(formValue);
     } catch (error) {
       console.log(error);
-      setStatus(true);
+      setErr(true);
     }
   };
+
   useEffect(() => {
-    const color = new Values("#d2691e").all(5);
-    colorHeader(color);
-    setColors(color);
+    applyColors("#d2691e");
   }, []);
+
   return (
     <main className="app">
       <h1>
-        <span data-id="19" className="name">
-          C
-        </span>
-        <span data-id="20" className="name">
-          o
-        </span>
-        <span data-id="21" className="name">
-          l
-        </span>
-        <span data-id="22" className="name">
-          o
-        </span>
-        <span data-id="23" className="name">
-          r
-        </span>
-        <span data-id="null" className="name">
-          {" "}
-        </span>
-        <span data-id="24" className="name">
-          P
-        </span>
-        <span data-id="25" className="name">
-          a
-        </span>
-        <span data-id="26" className="name">
-          l
-        </span>
-        <span data-id="27" className="name">
-          l
-        </span>
-        <span data-id="28" className="name">
-          e
-        </span>
-        <span data-id="29" className="name">
-          t
-        </span>
-        <span data-id="30" className="name">
-          e
-        </span>
+        {["C", "o", "l", "o", "r", " ", "P", "a", "l", "l", "e", "t", "e"].map(
+          (letter, index) => (
+            <span
+              key={index}
+              data-id={letter === " " ? null : index + 19}
+              className="name"
+            >
+              {letter}
+            </span>
+          )
+        )}
       </h1>
-      <form className={status ? "error" : ""} onSubmit={handleSubmit}>
+
+      <form className={err ? "error" : ""} onSubmit={handleSubmit}>
         <input
           placeholder="#d2691e"
           type="text"
@@ -92,6 +74,7 @@ function App() {
         />
         <button type="submit">Submit</button>
       </form>
+
       <section className="container">
         {colors.map((color, index) => (
           <List color={color} key={index} index={index} />
@@ -100,14 +83,5 @@ function App() {
     </main>
   );
 }
-//  <section className="loading_con">
-//    <article className="loading">
-//      <h2>Loading...</h2>
-//      <div>
-//        <span></span>
-//        <span></span>
-//        <span></span>
-//      </div>
-//    </article>
-//  </section>;
+
 export default App;

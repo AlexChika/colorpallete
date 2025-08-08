@@ -9,48 +9,6 @@
   margin: 0 auto;
   border-bottom: 2px solid grey;
 }
-/* ........................................ */
-.loading_con {
-  height: 80vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.loading div {
-  display: flex;
-}
-.loading div span {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  border: 2px solid white;
-  background: white;
-}
-.loading div span:nth-of-type(1) {
-  animation: loader 0.7s linear infinite;
-}
-.loading div span:nth-of-type(2) {
-  animation: loader2 0.7s linear infinite;
-}
-.loading div span:nth-of-type(3) {
-  animation: loader3 0.7s linear infinite;
-}
-
-@keyframes loader {
-  30% {
-    background: grey;
-  }
-}
-@keyframes loader2 {
-  60% {
-    background: grey;
-  }
-}
-@keyframes loader3 {
-  90% {
-    background: grey;
-  }
-}
 
 .app .container {
   width: 100%;
@@ -70,10 +28,12 @@ form {
   padding: 5px;
   background: white;
 }
+
 .error {
   border: 2px solid red;
   animation: error 0.25s linear;
 }
+
 @keyframes error {
   25% {
     transform: translateY(3px);
@@ -88,6 +48,7 @@ form {
     transform: translateY(0px);
   }
 }
+
 form input,
 form button {
   padding: 5px 10px;
@@ -96,28 +57,35 @@ form button {
   cursor: pointer;
   background: white;
 }
+
 form input {
   width: 85%;
 }
+
 form button {
-  color: skyblue;
+  color: rgb(0, 180, 251);
   width: 15%;
   border-left: 2px solid grey;
 }
+
 .color_box {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .box_content {
   text-align: center;
 }
+
 .white {
   color: white;
 }
+
 .black {
   color: black;
 }
+
 .alert {
   font-size: 12px;
   opacity: 0.7;
